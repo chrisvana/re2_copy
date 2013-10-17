@@ -2,7 +2,7 @@
   { "make": {
     "name": "re2_make",
     "pass_flags": "full",
-    "outs": [ "$GEN_DIR/lib/libre2.so" ]
+    "outs": [ "$GEN_DIR/lib/libre2.a" ]
   } },
 
   { "cc_library": {
