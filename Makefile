@@ -10,7 +10,7 @@ all: obj/libre2.a obj/so/libre2.so
 # LDPCRE=-L/usr/local/lib -lpcre
 
 #CXX=g++
-CXXFLAGS=-Wall -O3 -g -std=c++11 -DUSE_CXX0X -stdlib=libc++ -g -pthread -O3
+CXXFLAGS=-Wall -O3 -g -DUSE_CXX0X -g -pthread -O3
  # can override
 RE2_CXXFLAGS=-Wno-sign-compare -c -I. $(CCPCRE)  # required
 LDFLAGS=-pthread
@@ -40,9 +40,9 @@ SONAME=0
 # REBUILD_TABLES=1
 
 ifeq ($(shell uname),Darwin)
-MAKE_SHARED_LIBRARY=$(CXX) -dynamiclib $(LDFLAGS) -exported_symbols_list libre2.symbols.darwin -Wall -O3 -g -lpthread -std=c++11 -DUSE_CXX0X -stdlib=libc++ -g -Wall
+MAKE_SHARED_LIBRARY=$(CXX) -dynamiclib $(LDFLAGS) -exported_symbols_list libre2.symbols.darwin -Wall -O3 -g -lpthread -DUSE_CXX0X -g -Wall
 else
-MAKE_SHARED_LIBRARY=$(CXX) -shared -Wl,-soname,libre2.so.$(SONAME),--version-script=libre2.symbols $(LDFLAGS) -Wall -O3 -g -lpthread -std=c++11 -DUSE_CXX0X -stdlib=libc++ -g
+MAKE_SHARED_LIBRARY=$(CXX) -shared -Wl,-soname,libre2.so.$(SONAME),--version-script=libre2.symbols $(LDFLAGS) -Wall -O3 -g -lpthread -DUSE_CXX0X -g
 endif
 
 INSTALL_HFILES=\

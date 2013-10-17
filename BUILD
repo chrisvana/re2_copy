@@ -1,7 +1,8 @@
 [
   { "make": {
     "name": "re2_make",
-    "outs": [ "lib/libre2.so" ]
+    "pass_flags": "full",
+    "outs": [ "$GEN_DIR/lib/libre2.so" ]
   } },
 
   { "cc_library": {
@@ -12,13 +13,13 @@
                     "re2/stringpiece.h",
                     "re2/variadic_function.h"
     ],
-    "cc_objects": [ "$GEN_DIR/lib/libre2.so" ],
+    "cc_objects": [ "$GEN_DIR/lib/libre2.a" ],
     "dependencies": [ ":re2_make" ],
     "strict_file_mode": false,
-    "header_compile_args" : [ "-I$SRC_DIR" ]
+    "cc_include_dirs": [ "." ]
   } },
 
-  { "cc_binary": {
+  { "cc_test": {
     "name": "testinstall",
     "cc_sources": [ "testinstall.cc" ],
     "dependencies": [ ":re2" ]
