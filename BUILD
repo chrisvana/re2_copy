@@ -2,7 +2,8 @@
   { "make": {
     "name": "re2_make",
     "pass_flags": "full",
-    "outs": [ "$GEN_DIR/lib/libre2.a" ]
+    "outs": [ "$GEN_DIR/lib/libre2.a" ],
+    "licenses": [ "http://opensource.org/licenses/BSD-3-Clause" ]
   } },
 
   { "cc_library": {
